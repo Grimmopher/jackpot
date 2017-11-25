@@ -1,0 +1,15 @@
+.drawing .drawing-date {
+    padding-right: 20px;
+}
+
+.drawing .drawing-winnings {
+    padding-left: 20px;
+}
+
+.match {
+    background-color: greenyellow;
+}
+
+.jackpot {
+    background-color: red;
+}
