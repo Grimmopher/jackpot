@@ -1,17 +1,16 @@
 import React from 'react';
 import Drawing from './Drawing'
+import './DrawingHistory.css';
 
 export default (props) => {
     return (
-        <ul>
+        <table className='drawing-history'>
             {props.drawings.map((n) => {
                 console.log(n);
                 return (
-                    <li>
-                    <Drawing value={n.winningNumbers}/>
-                    </li> 
+                    <Drawing drawing={n}/>
                 );
             })}
-        </ul>
+        </table>
     )
 }
