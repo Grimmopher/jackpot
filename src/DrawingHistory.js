@@ -6,7 +6,7 @@ export default (props) => {
             <div className='drawing-history'>
                 <div className='table-headings'>
                     <div className="table-header drawing-date-header">Date</div>
-                    <div className="table-header drawing-number-header" colspan="5">Numbers</div>
+                    <div className="table-header drawing-number-header" >Numbers</div>
                     <div className="table-header drawing-powerball-header">Powerball</div>
                     <div className="table-header drawing-winnings-header">Winnings</div>
                 </div>
