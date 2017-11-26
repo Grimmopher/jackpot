@@ -3,17 +3,8 @@ import ReactDOM from 'react-dom';
 import './scss/style.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import queryString from 'query-string';
 
-const parsed = queryString.parse(window.location.search);
-
-let playerNumbers = [1,2,3,4,5,6];
-if (parsed.play){
-    playerNumbers = parsed.play.length == 6 ? parsed.play.map(n => parseInt(n)) : playerNumbers;
-}
-
-
-ReactDOM.render(<App playerNumbers={playerNumbers}/>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // jackpot
 //ReactDOM.render(<App playerNumbers={[35, 37, 46, 51, 61, 13]}/>, document.getElementById('root'));
