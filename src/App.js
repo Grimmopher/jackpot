@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './money_pig.svg';
 import DrawingHistory from './DrawingHistory';
 import lottoDrawing from './rules/lottoDrawing';
+import powerballNumbers from './rules/powerballNumbers';
 
 class App extends Component {
   constructor(props){
@@ -17,15 +18,7 @@ class App extends Component {
   }
 
   drawings = async() => {
-    let powerballDrawings = await fetch('https://data.ny.gov/resource/8vkr-v8vh.json');
-    let json = await powerballDrawings.json();
-    let drawings = json.slice();
-    for (let i = 0; i < json.length; i++){
-        if (json[i].draw_date === '2017-10-18T00:00:00.000'){
-            drawings = json.slice(0, i);
-            break;
-        }
-    }
+    let drawings = await powerballNumbers(Date.parse('2017-10-18T00:00:00.000'));
     this.setState({drawings: drawings.map( d => new lottoDrawing(d, this.state.playerNumbers))});
   }
 
