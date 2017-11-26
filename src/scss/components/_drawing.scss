@@ -1,19 +1,31 @@
-td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    color: rgb(151, 150, 150);
-    &:hover {
-        background-color: $tertiary-color;
-    }
-}
-
-// tr {
-//     &:hover {
-//         background-color: $tertiary-color;
-//     }
-// }
-
 .drawing {
+    display: block;
+    clear:both;
+    overflow:auto;
+
+    .drawing-data {
+        display: block;
+        float: left;
+        color: rgb(151, 150, 150);
+        text-align: center;
+        &:hover {
+            background-color: $tertiary-color;
+        }
+    }
+
+    .drawing-date{
+        width:20%
+    }
+
+    .drawing-number{
+        width:7%;
+    }
+    .drawing-powerball{
+        width:25%;
+    }
+    .drawing-winnings{
+        width:20%;
+    }
 
     .match {
         background-color: greenyellow;
@@ -21,7 +33,29 @@ td {
                     background-color: rgb(0, 255, 76);
                 }
     }
-    .jackpot {
-        background-color: red;
+}
+
+.jackpot {
+    background-color: white;
+    padding-bottom:0.5rem;
+    padding-top: 0.5rem;
+    animation: bg-color 3s infinite;
+    animation-direction: alternate;
+    border: 0.1rem solid $secondary-color;
+
+    .drawing-data{
+        color:red;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+
+    .match {
+        background-color: rgba(255, 255, 255, 0);
+
     }
 }
+
+@keyframes bg-color {
+    0%   { background-color: white;}
+    100% { background-color: greenyellow;}
+  }

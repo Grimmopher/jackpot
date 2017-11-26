@@ -1,17 +1,38 @@
-.table-container{
-    overflow-x:auto;
+.drawing-history {
+    margin:auto;
+    width:60%;
+    overflow: auto;
 
-    .drawing-history {
-        margin-left: auto;
-        margin-right:auto;
+    .table-headings{
         margin-top: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
+        clear:both;
+        overflow: auto;
 
-        th{
-            border: 1px solid #ddd;
-            padding: 0.3rem;
-            color: white;
+        .table-header{
+            float:left;
+            display: block;
+            color: #fff;
             background-color: $secondary-color;
         } 
+
+        .drawing-date-header{
+            width: 20%;
+        }
+    
+        .drawing-number-header{
+            width:35%;
+        }
+
+        .drawing-powerball-header{
+            width:25%;
+        }
+
+        .drawing-winnings-header{
+            width:20%;
+        }
     }
 }
 

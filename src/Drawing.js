@@ -3,24 +3,24 @@ import strf from 'strftime';
 
 export default (props) => {
     return (
-        <tr className={'drawing' + (props.drawing.winnings === 'jackpot' ? ' jackpot' : '')}>
-            <td className='drawing-date'>
+        <div className={'drawing' + (props.drawing.winnings === 'jackpot' ? ' jackpot' : '')}>
+            <div className='drawing-data drawing-date'>
                 {strf('%D', new Date(props.drawing.drawDate))}
-            </td>
+            </div>
 
             {props.drawing.winningNumbers.map((n) => {
-                let classes = 'drawing-number';
+                let classes = 'drawing-data drawing-number';
                 classes += n.match ? ' match' : '';
-                return (<td className={classes}> {n.number} </td>)
+                return (<div className={classes}> {n.number} </div>)
             })}
 
-            <td className={'drawing-powerball' + (props.drawing.powerball.match ? ' match' : '')}>
+            <div className={'drawing-data drawing-powerball' + (props.drawing.powerball.match ? ' match' : '')}>
                 {props.drawing.powerball.number}
-            </td>
+            </div>
 
-            <td className='drawing-winnings'>
+            <div className='drawing-data drawing-winnings'>
                 {(props.drawing.winnings === 'jackpot' ? '' : '$') + props.drawing.winnings}
-            </td>
-        </tr>
+            </div>
+        </div>
     );
 }
