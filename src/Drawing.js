@@ -1,8 +1,6 @@
 import React from 'react';
 import strf from 'strftime';
 
-import './Drawing.css';
-
 export default (props) => {
     return (
         <tr className={'drawing' + (props.drawing.winnings === 'jackpot' ? ' jackpot' : '')}>

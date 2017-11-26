@@ -1,0 +1,17 @@
+.table-container{
+    overflow-x:auto;
+
+    .drawing-history {
+        margin-left: auto;
+        margin-right:auto;
+        margin-top: 2rem;
+
+        th{
+            border: 1px solid #ddd;
+            padding: 0.3rem;
+            color: white;
+            background-color: $secondary-color;
+        } 
+    }
+}
+

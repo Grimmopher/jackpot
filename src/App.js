@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './newlogo.svg';
-import './App.css';
+import logo from './money_pig.svg';
 import DrawingHistory from './DrawingHistory';
 import lottoDrawing from './rules/lottoDrawing';
 

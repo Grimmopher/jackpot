@@ -1,0 +1,10 @@
+@import './abstracts/variables';
+@import './base/reset';
+@import './components/_app.scss';
+@import './components/_drawing.scss';
+@import './components/_drawing-history.scss';
+
+body {
+    font-family: $font-stack;
+    background-color: $primary-color;
+  }
