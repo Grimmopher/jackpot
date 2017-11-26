@@ -6,7 +6,7 @@
     .drawing-data {
         display: block;
         float: left;
-        color: rgb(151, 150, 150);
+        color: $primary-text-color;
         text-align: center;
     }
 
@@ -63,7 +63,7 @@
 
         .color-box{
             margin:auto;
-            width:2rem;
+            width:50%;
 
             &:hover{
                 background-color: $tertiary-color; 
@@ -72,7 +72,7 @@
     }
 
     .won {
-        color: red;
+        color: $won-money-text-color;
         font-weight: 800;
 
         .color-box{
