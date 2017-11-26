@@ -16,19 +16,17 @@ class App extends Component {
     this.drawings();
   }
 
-  drawings = () => {
-    fetch('https://data.ny.gov/resource/8vkr-v8vh.json')
-      .then(r => r.json())
-      .then((json) => {
-          let drawings = [];
-          for (let i = 0; i < json.length; i++){
-              if (json[i].draw_date === '2017-10-18T00:00:00.000'){
-                  drawings = json.slice(0, i);
-              }
-          }
-          console.log(this.state)
-          this.setState({drawings: drawings.map( d => new lottoDrawing(d, this.state.playerNumbers))});
-      });
+  drawings = async() => {
+    let powerballDrawings = await fetch('https://data.ny.gov/resource/8vkr-v8vh.json');
+    let json = await powerballDrawings.json();
+    let drawings = json.slice();
+    for (let i = 0; i < json.length; i++){
+        if (json[i].draw_date === '2017-10-18T00:00:00.000'){
+            drawings = json.slice(0, i);
+            break;
+        }
+    }
+    this.setState({drawings: drawings.map( d => new lottoDrawing(d, this.state.playerNumbers))});
   }
 
   render = () => {
@@ -38,7 +36,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Jackpot</h1>
         </header>
-        {console.log(this.state.drawings)}
         <DrawingHistory drawings={this.state.drawings}/>
       </div>
     );

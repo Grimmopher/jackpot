@@ -6,7 +6,12 @@ import registerServiceWorker from './registerServiceWorker';
 import queryString from 'query-string';
 
 const parsed = queryString.parse(window.location.search);
-let playerNumbers = parsed.play.length == 6 ? parsed.play.map(n => parseInt(n)) : [1,2,3,4,5,6];
+
+let playerNumbers = [1,2,3,4,5,6];
+if (parsed.play){
+    playerNumbers = parsed.play.length == 6 ? parsed.play.map(n => parseInt(n)) : playerNumbers;
+}
+
 
 ReactDOM.render(<App playerNumbers={playerNumbers}/>, document.getElementById('root'));
 

@@ -12,7 +12,6 @@ export default (props) => {
                     <th className="drawing-winnings-header">Winnings</th>
                 </thead>
                 {props.drawings.map((n) => {
-                    console.log(n);
                     return (
                         <Drawing drawing={n}/>
                     );
