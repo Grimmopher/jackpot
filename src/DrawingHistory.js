@@ -3,18 +3,18 @@ import Drawing from './Drawing'
 
 export default (props) => {
     return (
-            <div className='drawing-history'>
-                <div className='table-headings'>
-                    <div className="table-header drawing-date-header">Date</div>
-                    <div className="table-header drawing-number-header" colspan="5">Numbers</div>
-                    <div className="table-header drawing-powerball-header">Powerball</div>
-                    <div className="table-header drawing-winnings-header">Winnings</div>
-                </div>
-                {props.drawings.map((n) => {
-                    return (
-                        <Drawing drawing={n} />
-                    );
-                })}
+        <div className='drawing-history'>
+            <div className='table-headings'>
+                <div className="table-header drawing-date-header">Date</div>
+                <div className="table-header drawing-number-header" colspan="5">Numbers</div>
+                <div className="table-header drawing-powerball-header">Powerball</div>
+                <div className="table-header drawing-winnings-header">Winnings</div>
             </div>
+            {props.drawings.map((n) => {
+                return (
+                    <Drawing drawing={n} />
+                );
+            })}
+        </div>
     )
 }

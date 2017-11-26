@@ -14,7 +14,7 @@ class App extends Component {
       playerNumbers: [1, 2, 3, 4, 5, 6],
       rawDrawings: [],
       drawings: [],
-      showHistory: false
+      showHistory: true
     }
   }
 
