@@ -2,7 +2,31 @@ $font-stack: ('Roboto', sans-serif);
 
 $primary-color: #fff;
 $secondary-color: rgb(80, 172, 173);
-$tertiary-color:rgb(201, 248, 248);;
+$tertiary-color:rgb(201, 248, 248);
 $primary-text-color: #fff;
-$link-color: $secondary-color;
-$link-hover-color:$tertiary-color;
+
+$match-color: greenyellow;
+$match-hover-color: rgb(0, 203, 98);
+
+$jackpot-text-color:red;
+$jackpot-bg-color-0:white;
+$jackpot-bg-color-100: greenyellow;
+
+$won-money-hover-bg-color: red;
+$won-money-hover-text-color: white;
+
+//Breakpoints
+//Large tablets/computers (1200px) 
+$screen-xl-max: 75em; 
+
+//Tablets and small computers (1000px) 
+$screen-lg-max: 62.5em; 
+
+//Small tablets (800px)
+$screen-md-max: 50em;
+
+//Small tablets and large smartphone (600px)
+$screen-sm-max:37.5em;
+
+//Very small screens (500px)
+$screen-es-max:31.25em;
