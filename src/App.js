@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './money_pig.svg';
 import DrawingHistory from './DrawingHistory';
+import NumberInput from './NumberInput';
 import lottoDrawing from './rules/lottoDrawing';
 import powerballNumbers from './rules/powerballNumbers';
 import queryString from 'query-string';
@@ -9,9 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerNumbers: [1,2,3,4,5,6],
+      historyStartDate: new Date(),
+      playerNumbers: [1, 2, 3, 4, 5, 6],
       rawDrawings: [],
-      drawings: []
+      drawings: [],
+      showHistory: false
     }
   }
 
@@ -38,13 +41,16 @@ class App extends Component {
   }
 
   render = () => {
+    let display = this.state.showHistory
+      ? <DrawingHistory drawings={this.state.drawings} />
+      : <NumberInput onDayChange={(day) => { this.setState({ historyStartDate: day }); }} />;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Jackpot</h1>
         </header>
-        <DrawingHistory drawings={this.state.drawings} />
+        {display}
       </div>
     );
   }
