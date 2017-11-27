@@ -98,17 +98,16 @@ class App extends Component {
           <h1 className="App-title">Jackpot</h1>
           <div className="current-player-numbers">
                 <div className='current-numbers'>
-                    {this.state.playerNumbers.map((n,i)=>{
-                      if(i<5){
-                        return (
-                        `${n} `
-                        )
-                      } else {
-                        return(
-                          <span>{n}</span>
-                        )
-                      }
-                    })}
+                    {this.state.playerNumbers.map((n,i)=>(i<5)
+                    ? (
+                        <span>
+                          {n}&ensp;
+                        </span>
+                      )
+                    : (
+                          <span className="pb">{n}</span>
+                      )
+                    )}
                 </div>
             </div>
         </header>

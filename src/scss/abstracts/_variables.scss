@@ -8,11 +8,9 @@ $powerball-color:#FFA45B;
 
 $match-color: #AEEE55;
 $match-hover-color: #F36C00;
-;
 
-$jackpot-text-color:#CE005A;
-$jackpot-bg-color-0:white;
-$jackpot-bg-color-100: #FFA45B;
+$jackpot-bg-color-0:#CE005A;
+$jackpot-bg-color-100: #00938E;
 
 $won-money-text-color:#F36C00;
 $won-money-hover-bg-color: #CE005A;
@@ -31,7 +29,10 @@ $screen-md-max: 50em;
 //Small tablets and large smartphone (600px)
 $screen-sm-max:37.5em;
 
-//Very small screens (500px)
-$screen-es-max:31.25em;
+//Very small screens (400px)
+$screen-es-max:25em;
+
+//300px
+$screen-supersmall-max:18.75em;
 
 //Palette URL: http://paletton.com/#uid=72t0O0kxcutkyBZq5y0-6o9FqiS

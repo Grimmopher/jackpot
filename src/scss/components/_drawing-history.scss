@@ -1,20 +1,39 @@
 .drawing-history {
     margin:auto;
-    width:50%;
+    width:45%;
     overflow: auto;
     padding-top:1.5rem;
+    line-height: 2.0rem;
 
-    
+    @include breakpoint(xl){
+      width: 50%;
+    }
+
     @include breakpoint(lg){
-		width: 80%;
+		width: 65%;
     }
     
     @include breakpoint(md){
-		width: 90%;
+		width: 80%;
     }
     
     @include breakpoint(sm){
         width: 98%;
-	}
+    }
+    
+    @include breakpoint(es){
+      font-size: 0.85rem;
+    }
+
+    
+}
+
+
+.footer{
+  color: $primary-text-color;
+  width: 100%;
+  margin-top:2rem;
+  margin-left:auto;
+  margin-right: auto;
 }
 
