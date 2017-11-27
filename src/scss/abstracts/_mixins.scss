@@ -1,17 +1,20 @@
 @mixin breakpoint($point) {
   @if $point == xl { 
     @media (max-width: $screen-xl-max) { @content ; } 
- } 
+  } 
    @else if $point == lg { 
     @media (max-width: $screen-lg-max) { @content ; } 
- } 
+  } 
   @else if $point == md { 
       @media (max-width: $screen-md-max)  { @content ; }
-   }
+  }
    @else if $point == sm {
       @media (max-width: $screen-sm-max)  { @content ; }
-   }
+  }
    @else if $point == es {
     @media (max-width: $screen-es-max)  { @content ; }
- }
- }
+  }
+  @else if $point == supersmall {
+    @media (max-width: $screen-supersmall-max)  { @content ; }
+  }
+}
