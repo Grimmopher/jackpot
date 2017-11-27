@@ -1,5 +1,6 @@
-@import './abstracts/variables';
-@import './base/reset';
+@import './abstracts/_variables.scss';
+@import './abstracts/_mixins.scss';
+@import './base/_reset.scss';
 @import './components/_app.scss';
 @import './components/_drawing.scss';
 @import './components/_drawing-history.scss';

@@ -1,7 +1,23 @@
 .drawing-history {
     margin:auto;
-    width:60%;
+    width:50%;
     overflow: auto;
+
+    @include breakpoint(xl){
+		width: 60%;
+    }
+    
+    @include breakpoint(lg){
+		width: 80%;
+    }
+    
+    @include breakpoint(md){
+		width: 90%;
+    }
+    
+    @include breakpoint(sm){
+        width: 98%;
+	}
 
     .table-headings{
         margin-top: 2rem;
@@ -24,10 +40,26 @@
     
         .drawing-number-header{
             width:35%;
+
+            @include breakpoint(md){
+                width:40%;
+            }
+
+            @include breakpoint(sm){
+                width:45%;
+            }
         }
 
         .drawing-powerball-header{
             width:25%;
+
+            @include breakpoint(md){
+                width:20%;
+            }
+
+            @include breakpoint(sm){
+                width:15%;
+            }
         }
 
         .drawing-winnings-header{

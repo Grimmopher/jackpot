@@ -6,56 +6,163 @@
     .drawing-data {
         display: block;
         float: left;
-        color: rgb(151, 150, 150);
+        color: $primary-text-color;
         text-align: center;
-        &:hover {
-            background-color: $tertiary-color;
-        }
     }
 
     .drawing-date{
-        width:20%
+        width:20%;
+
+        .color-box{
+            &:hover{
+                background-color: $tertiary-color; 
+            }
+        }
     }
 
     .drawing-number{
         width:7%;
+
+        .color-box{
+            margin:auto;
+            width:2rem;
+            &:hover{
+                background-color: $tertiary-color; 
+            }
+        }
+
+        @include breakpoint(md){
+            width:8%;
+        }
+
+        @include breakpoint(sm){
+            width:9%;
+        }
     }
     .drawing-powerball{
         width:25%;
+
+        .color-box{
+            margin:auto;
+            width:2rem;
+            &:hover{
+                background-color: $tertiary-color; 
+            }
+        }
+
+        @include breakpoint(md){
+            width:20%;
+        }
+
+        @include breakpoint(sm){
+            width:15%;
+        }
     }
     .drawing-winnings{
         width:20%;
+
+        .color-box{
+            margin:auto;
+            width:50%;
+
+            &:hover{
+                background-color: $tertiary-color; 
+            }
+        }
     }
 
+    .won {
+        color: $won-money-text-color;
+        font-weight: 800;
+
+        .color-box{
+            &:hover{
+                background-color: $won-money-hover-bg-color; 
+                color: $won-money-hover-text-color;
+            }
+        }
+    }
+
+    
+
     .match {
-        background-color: greenyellow;
-        &:hover {
-                    background-color: rgb(0, 255, 76);
-                }
+        .color-box {
+            width: 2rem;
+            margin:auto;
+            background-color: $match-color;
+
+            &:hover{
+                background-color: $match-hover-color;
+                color: white;
+            }
+        }
     }
 }
 
 .jackpot {
     background-color: white;
-    padding-bottom:0.5rem;
-    padding-top: 0.5rem;
+    line-height: 2rem;
     animation: bg-color 3s infinite;
     animation-direction: alternate;
     border: 0.1rem solid $secondary-color;
 
     .drawing-data{
-        color:red;
+        color:$jackpot-text-color;
         font-size: 1.5rem;
         font-weight: 800;
+
+        @include breakpoint(md){
+            font-size: 1.3rem;
+        }
+
+        @include breakpoint(sm){
+            font-size: 1.2rem;
+        }
+
+        @include breakpoint(es){
+            font-size: 1.0rem;
+        }
+    }
+
+    .drawing-date{
+        .color-box{
+            margin:auto;
+            width:80%;
+
+            &:hover{
+                background-color: $match-hover-color; 
+                color: white;
+            }
+        }
+    }
+
+    .drawing-winnings{
+        .color-box{
+            margin:auto;
+            width:80%;
+
+            &:hover{
+                background-color: $match-hover-color; 
+                color:white;
+            }
+        }
     }
 
     .match {
-        background-color: rgba(255, 255, 255, 0);
+        .color-box {
+            width: 2rem;
+            margin:auto;
+            background-color: rgba(255, 255, 255, 0);
 
+            &:hover{
+                background-color: $match-hover-color;
+                color: white;
+            }
+        }
     }
 }
 
 @keyframes bg-color {
-    0%   { background-color: white;}
-    100% { background-color: greenyellow;}
+    0%   { background-color: $jackpot-bg-color-0;}
+    100% { background-color: $jackpot-bg-color-100;}
   }
