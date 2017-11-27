@@ -19,6 +19,9 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    // reset page if backbutton is pressed after choosing a number
+    window.onpopstate = () => {this.setState({showHistory: false})};
+    // download powerball history
     this.drawings();
   }
 
