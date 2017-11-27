@@ -11,12 +11,16 @@
     }
 
     .drawing-date{
-        width:20%;
+        width:25%;
 
         .color-box{
             &:hover{
                 background-color: $tertiary-color; 
             }
+        }
+
+        @include breakpoint(es){
+            width:22.5%;
         }
     }
 
@@ -31,16 +35,17 @@
             }
         }
 
-        @include breakpoint(md){
+        @include breakpoint(sm){
             width:8%;
         }
 
-        @include breakpoint(sm){
-            width:9%;
+        @include breakpoint(es){
+            width:8.5%;
         }
     }
+
     .drawing-powerball{
-        width:25%;
+        width:20%;
 
         .color-box{
             margin:auto;
@@ -58,6 +63,7 @@
             width:15%;
         }
     }
+
     .drawing-winnings{
         width:20%;
 
@@ -76,9 +82,14 @@
         font-weight: 800;
 
         .color-box{
+            width:50%;
             &:hover{
                 background-color: $won-money-hover-bg-color; 
                 color: $won-money-hover-text-color;
+            }
+
+            @include breakpoint(es){
+                width:80%;
             }
         }
     }

@@ -35,27 +35,27 @@
         } 
 
         .drawing-date-header{
-            width: 20%;
+            width: 25%;
+
+            @include breakpoint(es){
+                width:22.5%;
+            }
         }
     
         .drawing-number-header{
             width:35%;
 
-            @include breakpoint(md){
+            @include breakpoint(sm){
                 width:40%;
             }
 
-            @include breakpoint(sm){
-                width:45%;
+            @include breakpoint(es){
+                width:42.5%;
             }
         }
 
         .drawing-powerball-header{
-            width:25%;
-
-            @include breakpoint(md){
-                width:20%;
-            }
+            width:20%;
 
             @include breakpoint(sm){
                 width:15%;
