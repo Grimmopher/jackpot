@@ -16,12 +16,12 @@
 
 .App-header {
   background-color: $secondary-color;
-  height: 9.0rem;
+  height: 10.0rem;
   padding: 1.25rem;
   color: white;
 
   @include breakpoint(sm){
-    height: 6.5rem;
+    height: 8.0rem;
   }
 }
 
