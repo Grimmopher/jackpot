@@ -100,12 +100,12 @@ class App extends Component {
                 <div className='current-numbers'>
                     {this.state.playerNumbers.map((n,i)=>(i<5)
                     ? (
-                        <span>
+                        <span key={i}>
                           {n}&ensp;
                         </span>
                       )
                     : (
-                          <span className="pb">{n}</span>
+                        <span key={i} className="pb">{n}</span>
                       )
                     )}
                 </div>
