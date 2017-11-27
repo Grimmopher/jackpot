@@ -48,11 +48,11 @@ class App extends Component {
     let playSet = false;
     let dateSet = false;
     if (parsed.play && parsed.play.length === 6) {
-      this.setState({ playerNumbers: parsed.play.map(n => parseInt(n)) })
+      this.setState({ playerNumbers: parsed.play.map(n => parseInt(n, 10)) })
       playSet = true;
     }
     if (parsed.date) {
-      this.setState({ historyStartDate: new Date(parseInt(parsed.date)) });
+      this.setState({ historyStartDate: new Date(parseInt(parsed.date, 10)) });
       dateSet = true;
     }
     if (playSet && dateSet) {
@@ -73,9 +73,8 @@ class App extends Component {
 
   handleClick = () => {
     if (this.state.playerNumbers.includes('')) return;
-    if (this.state.historyStartDate == new Date()) return;
 
-    let playerNums = this.state.playerNumbers.slice().map(n => parseInt(n));
+    let playerNums = this.state.playerNumbers.slice().map(n => parseInt(n, 10));
     this.setState({
       showHistory: true,
       playerNumbers: playerNums,

@@ -14,9 +14,9 @@ const drawingsFromDate = (json, startDate) => {
     for (let i = 0; i < json.length; i++){
         let raw = json[i];
         let drawing = {
-            winningNumbers: raw.winning_numbers.split(' ').map(n => parseInt(n)),
+            winningNumbers: raw.winning_numbers.split(' ').map(n => parseInt(n, 10)),
             drawDate: Date.parse(raw.draw_date),
-            multiplier: parseInt(raw.multiplier)
+            multiplier: parseInt(raw.multiplier, 10)
         }
         if (drawing.drawDate > startDate) {
             drawings.push(drawing);

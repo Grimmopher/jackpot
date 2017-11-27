@@ -3,22 +3,18 @@ const winnings = (matches, powerballMatch) => {
     switch (matches){
         case 0:
             return powerballMatch ? 4 : 0;
-            break;
         case 1:
             return powerballMatch ? 4 : 0;
-            break;
         case 2:
             return powerballMatch ? 7 : 0;
-            break;
         case 3:
             return powerballMatch ? 100 : 7;
-            break;
         case 4:
             return powerballMatch ? 50000 : 100;
-            break;
         case 5:
             return powerballMatch ? 'jackpot' : 1000000;
-            break;
+        default:
+            return 0;
     }
 }
 
