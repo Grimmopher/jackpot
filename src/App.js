@@ -26,7 +26,11 @@ class App extends Component {
     let drawings = await fetchDrawings();
     this.setState({ rawDrawings: drawings });
     this.checkQueryString();
-    this.setDrawingHistory();
+  }
+
+  setDrawingHistory = () => {
+    let draws = drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate);
+    this.setState({ drawings: draws.map(d => new lottoDrawing(d, this.state.playerNumbers)) });
   }
 
   checkQueryString = () => {
@@ -43,24 +47,34 @@ class App extends Component {
     }
     if (playSet && dateSet) {
       this.setState({showHistory: true})
+      this.setDrawingHistory();
     }
   }
 
-  setDrawingHistory = () => {
-    let draws = drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate);
-    this.setState({ drawings: draws.map(d => new lottoDrawing(d, this.state.playerNumbers)) });
-  }
-
   setPlayerNumbers = (nums) => {
-    console.log(nums);
-    if (nums.includes(0)) return;
-    this.setState({ playerNumbers: nums.slice() });
-    if (this.state.historyStartDate == new Date()) return;
-    this.setState({ showHistory: true });
-    console.log(this.state);
+    let newNums = this.state.playerNumbers.slice();
+    let hasNewNums = false;
+    let newShowHistory = this.state.showHistory;
+    let newDraws = this.state.drawings;
+
+    if (!nums.includes(0)) {
+      newNums = nums.slice().map(n => parseInt(n));
+      hasNewNums = true;
+    }
+
+    if (this.state.historyStartDate != new Date() && hasNewNums) {
+      newShowHistory = true;
+      newDraws = drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate).map(d => new lottoDrawing(d, newNums));
+    }
+    this.setState({ 
+      showHistory: newShowHistory,
+      playerNumbers: newNums,
+      drawings: newDraws });
   }
 
   render = () => {
+    console.log(this.state);
+
     let display = this.state.showHistory
       ? <DrawingHistory drawings={this.state.drawings} />
       : <NumberInput onDayChange={(day) => { this.setState({ historyStartDate: day }); }} onClick={(nums) => { this.setPlayerNumbers(nums) }} />;
