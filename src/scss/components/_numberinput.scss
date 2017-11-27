@@ -22,10 +22,6 @@
     .instructions{
         padding-top:1.8rem;
         padding-bottom:0.8rem;
-
-        .pb-instr{
-            font-size:0.85rem;
-        }
     }
 
     .player-nums{
@@ -43,15 +39,23 @@
 
         .num{
             display: block;
-            width: 2rem;
+            width: 1.5rem;
             height: 1.2rem;
-            margin-left:0.2rem;
+            margin-left:0.5rem;
+            text-align: center;
         }
 
         .pb{
             color: $powerball-color;
             border: 0.1rem $powerball-color solid;
         }
+    }
+
+    .DayPickerInput{
+        input {
+            text-align: center;
+        }
+       
     }
 
     .btn{
@@ -72,13 +76,10 @@
         }
 
         @include breakpoint(es){
-            font-size:0.8rem;
-        }
-
-        @include breakpoint(supersmall){
-            width: 40%
+            width: 25%;
         }
     }
+
     
 
 

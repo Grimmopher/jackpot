@@ -6,7 +6,7 @@ export default (props) => {
     return (
         <div className="number-input-container">
             <div className="instructions">
-                Type in your Powerball lottery numbers below. <br/><span className="pb-instr">(Powerball number = orange)</span>
+                Enter your Powerball numbers.
             </div>
             <div className="player-nums">
                 {props.playerNumbers.map((n, i) => (i<5)
@@ -19,7 +19,7 @@ export default (props) => {
                 )}
             </div>
                 <div className="instructions">
-                    Pick the date that you would like to see drawings from.
+                    Show drawings after this date.
                 </div>
             <DayPickerInput onDayChange={props.onDayChange} />
             <div>

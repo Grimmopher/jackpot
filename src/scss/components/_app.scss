@@ -16,12 +16,12 @@
 
 .App-header {
   background-color: $secondary-color;
-  height: 10.0rem;
+  height: 9.0rem;
   padding: 1.25rem;
   color: white;
 
   @include breakpoint(sm){
-    height: 8rem;
+    height: 6.5rem;
   }
 }
 
@@ -52,4 +52,14 @@
         color: $powerball-color;
       }
   }
+}
+
+footer{
+  color: $primary-text-color;
+  font-size:0.7rem;
+  width: 100%;
+  margin-top:5rem;
+  margin-left:auto;
+  margin-right: auto;
+  margin-bottom:2rem;
 }

@@ -5,12 +5,13 @@ import NumberInput from './NumberInput';
 import lottoDrawing from './rules/lottoDrawing';
 import { fetchDrawings, drawingsFromDate } from './rules/powerballNumbers';
 import queryString from 'query-string';
+import strf from 'strftime';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      historyStartDate: new Date(),
+      historyStartDate: new Date(1990),
       playerNumbers: new Array(6).fill(''),
       rawDrawings: [],
       drawings: [],
@@ -112,6 +113,9 @@ class App extends Component {
             </div>
         </header>
         {display}
+        <footer>
+          &copy; Grimm {strf("%Y",new Date())}
+        </footer>
       </div>
     );
   }
