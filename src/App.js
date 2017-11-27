@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       historyStartDate: new Date(),
-      playerNumbers: [],
+      playerNumbers: new Array(6).fill(''),
       rawDrawings: [],
       drawings: [],
       showHistory: false
@@ -26,6 +26,12 @@ class App extends Component {
     let drawings = await fetchDrawings();
     this.setState({ rawDrawings: drawings });
     this.checkQueryString();
+  }
+
+  onPlayerNumberChange = (event, index) => {
+    let nums = this.state.playerNumbers.slice();
+    nums[index] = event.target.value;
+    this.setState({ playerNumbers: nums });
   }
 
   setDrawingHistory = () => {
@@ -46,38 +52,42 @@ class App extends Component {
       dateSet = true;
     }
     if (playSet && dateSet) {
-      this.setState({showHistory: true})
+      this.setState({ showHistory: true })
       this.setDrawingHistory();
     }
   }
 
-  setPlayerNumbers = (nums) => {
-    let newNums = this.state.playerNumbers.slice();
-    let hasNewNums = false;
-    let newShowHistory = this.state.showHistory;
-    let newDraws = this.state.drawings;
+  setUrl = () => {
+    let query = '?';
+    this.state.playerNumbers.forEach( (n) => {
+      query += `play=${n}&`
+    })
+    query += `date=${this.state.historyStartDate.getTime()}`
+    var newurl = window.location.origin + window.location.pathname + query;
+    window.history.pushState({path:newurl},'',newurl);
+  }
 
-    if (!nums.includes(0)) {
-      newNums = nums.slice().map(n => parseInt(n));
-      hasNewNums = true;
-    }
+  handleClick = () => {
+    if (this.state.playerNumbers.includes('')) return;
+    if (this.state.historyStartDate == new Date()) return;
 
-    if (this.state.historyStartDate != new Date() && hasNewNums) {
-      newShowHistory = true;
-      newDraws = drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate).map(d => new lottoDrawing(d, newNums));
-    }
-    this.setState({ 
-      showHistory: newShowHistory,
-      playerNumbers: newNums,
-      drawings: newDraws });
+    let playerNums = this.state.playerNumbers.slice().map(n => parseInt(n));
+    this.setState({
+      showHistory: true,
+      playerNumbers: playerNums,
+      drawings: drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate).map(d => new lottoDrawing(d, playerNums))
+    });
+
+    this.setUrl();
   }
 
   render = () => {
-    console.log(this.state);
-
     let display = this.state.showHistory
       ? <DrawingHistory drawings={this.state.drawings} />
-      : <NumberInput onDayChange={(day) => { this.setState({ historyStartDate: day }); }} onClick={(nums) => { this.setPlayerNumbers(nums) }} />;
+      : <NumberInput playerNumbers={this.state.playerNumbers.slice()}
+                     onPlayerNumberChange={this.onPlayerNumberChange}
+                     onDayChange={(day) => { this.setState({ historyStartDate: day }); }}
+                     onClick={this.handleClick} />;
     return (
       <div className="App">
         <header className="App-header">
