@@ -2,10 +2,8 @@
     margin:auto;
     width:50%;
     overflow: auto;
+    padding-top:1.5rem;
 
-    @include breakpoint(xl){
-		width: 60%;
-    }
     
     @include breakpoint(lg){
 		width: 80%;
@@ -18,53 +16,5 @@
     @include breakpoint(sm){
         width: 98%;
 	}
-
-    .table-headings{
-        margin-top: 2rem;
-        margin-left: auto;
-        margin-right: auto;
-        width:100%;
-        clear:both;
-        overflow: auto;
-
-        .table-header{
-            float:left;
-            display: block;
-            color: #fff;
-            background-color: $secondary-color;
-        } 
-
-        .drawing-date-header{
-            width: 25%;
-
-            @include breakpoint(es){
-                width:22.5%;
-            }
-        }
-    
-        .drawing-number-header{
-            width:35%;
-
-            @include breakpoint(sm){
-                width:40%;
-            }
-
-            @include breakpoint(es){
-                width:42.5%;
-            }
-        }
-
-        .drawing-powerball-header{
-            width:20%;
-
-            @include breakpoint(sm){
-                width:15%;
-            }
-        }
-
-        .drawing-winnings-header{
-            width:20%;
-        }
-    }
 }
 

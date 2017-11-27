@@ -93,6 +93,21 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Jackpot</h1>
+          <div className="current-player-numbers">
+                <div className='current-numbers'>
+                    {this.state.playerNumbers.map((n,i)=>{
+                      if(i<5){
+                        return (
+                        `${n} `
+                        )
+                      } else {
+                        return(
+                          <span>{n}</span>
+                        )
+                      }
+                    })}
+                </div>
+            </div>
         </header>
         {display}
       </div>
