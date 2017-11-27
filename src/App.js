@@ -3,7 +3,7 @@ import logo from './money_pig.svg';
 import DrawingHistory from './DrawingHistory';
 import NumberInput from './NumberInput';
 import lottoDrawing from './rules/lottoDrawing';
-import powerballNumbers from './rules/powerballNumbers';
+import { fetchDrawings, drawingsFromDate } from './rules/powerballNumbers';
 import queryString from 'query-string';
 
 class App extends Component {
@@ -11,44 +11,106 @@ class App extends Component {
     super(props);
     this.state = {
       historyStartDate: new Date(),
-      playerNumbers: [1, 2, 3, 4, 5, 6],
+      playerNumbers: new Array(6).fill(''),
       rawDrawings: [],
       drawings: [],
-      showHistory: true
+      showHistory: false
     }
   }
 
   componentDidMount = () => {
+    // reset page if backbutton is pressed after choosing a number
+    window.onpopstate = () => {this.setState({showHistory: false})};
+    // download powerball history
     this.drawings();
   }
 
   drawings = async () => {
-    let drawings = await powerballNumbers(Date.parse('2017-10-18T00:00:00.000'));
+    let drawings = await fetchDrawings();
     this.setState({ rawDrawings: drawings });
     this.checkQueryString();
-    this.setDrawingHistory();
+  }
+
+  onPlayerNumberChange = (event, index) => {
+    let nums = this.state.playerNumbers.slice();
+    nums[index] = event.target.value;
+    this.setState({ playerNumbers: nums });
+  }
+
+  setDrawingHistory = () => {
+    let draws = drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate);
+    this.setState({ drawings: draws.map(d => new lottoDrawing(d, this.state.playerNumbers)) });
   }
 
   checkQueryString = () => {
     let parsed = queryString.parse(window.location.search);
+    let playSet = false;
+    let dateSet = false;
     if (parsed.play && parsed.play.length === 6) {
       this.setState({ playerNumbers: parsed.play.map(n => parseInt(n)) })
+      playSet = true;
+    }
+    if (parsed.date) {
+      this.setState({ historyStartDate: new Date(parseInt(parsed.date)) });
+      dateSet = true;
+    }
+    if (playSet && dateSet) {
+      this.setState({ showHistory: true })
+      this.setDrawingHistory();
     }
   }
 
-  setDrawingHistory = () => {
-    this.setState({ drawings: this.state.rawDrawings.map(d => new lottoDrawing(d, this.state.playerNumbers)) });
+  setUrl = () => {
+    let query = '?';
+    this.state.playerNumbers.forEach( (n) => {
+      query += `play=${n}&`
+    })
+    query += `date=${this.state.historyStartDate.getTime()}`
+    var newurl = window.location.origin + window.location.pathname + query;
+    window.history.pushState({path:newurl},'',newurl);
+  }
+
+  handleClick = () => {
+    if (this.state.playerNumbers.includes('')) return;
+    if (this.state.historyStartDate == new Date()) return;
+
+    let playerNums = this.state.playerNumbers.slice().map(n => parseInt(n));
+    this.setState({
+      showHistory: true,
+      playerNumbers: playerNums,
+      drawings: drawingsFromDate(this.state.rawDrawings, this.state.historyStartDate).map(d => new lottoDrawing(d, playerNums))
+    });
+
+    this.setUrl();
   }
 
   render = () => {
     let display = this.state.showHistory
       ? <DrawingHistory drawings={this.state.drawings} />
-      : <NumberInput onDayChange={(day) => { this.setState({ historyStartDate: day }); }} />;
+      : <NumberInput playerNumbers={this.state.playerNumbers.slice()}
+                     onPlayerNumberChange={this.onPlayerNumberChange}
+                     onDayChange={(day) => { this.setState({ historyStartDate: day }); }}
+                     onClick={this.handleClick} />;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Jackpot</h1>
+          <div className="current-player-numbers">
+                <div className='current-numbers'>
+                    {this.state.playerNumbers.map((n,i)=>{
+                      if(i<5){
+                        return (
+                        `${n} `
+                        )
+                      } else {
+                        return(
+                          <span>{n}</span>
+                        )
+                      }
+                    })}
+                </div>
+            </div>
         </header>
         {display}
       </div>

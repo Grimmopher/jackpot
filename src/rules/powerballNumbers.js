@@ -3,9 +3,13 @@
 //     "multiplier": "2",
 //     "winning_numbers": "10 16 38 43 63 23"
 //  }
-export default async(startDate) => {
+const fetchDrawings = async() => {
     let powerballDrawings = await fetch('https://data.ny.gov/resource/8vkr-v8vh.json');
     let json = await powerballDrawings.json();
+    return json;
+}
+
+const drawingsFromDate = (json, startDate) => {
     let drawings = [];
     for (let i = 0; i < json.length; i++){
         let raw = json[i];
@@ -22,3 +26,5 @@ export default async(startDate) => {
     }
     return drawings;
 }
+
+export {fetchDrawings, drawingsFromDate}

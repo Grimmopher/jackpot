@@ -12,7 +12,7 @@
 
 .App-header {
   background-color: $secondary-color;
-  height: 8.0rem;
+  height: 10.0rem;
   padding: 1.25rem;
   color: white;
 }
@@ -29,4 +29,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+
+.current-player-numbers{
+  margin:auto;
+  padding-top:1rem;
+
+  .current-numbers{
+      display: block;
+      color: $primary-color;
+      text-align: center;
+      span{
+        color: $powerball-color;
+      }
+  }
 }
