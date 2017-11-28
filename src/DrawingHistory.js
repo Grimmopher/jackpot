@@ -4,9 +4,9 @@ import Drawing from './Drawing'
 export default (props) => {
     return (
         <div className='drawing-history'>
-            {props.drawings.map((n) => {
+            {props.drawings.map((n,i) => {
                 return (
-                    <Drawing drawing={n} />
+                    <Drawing key={i} drawing={n} />
                 );
             })}
         </div>

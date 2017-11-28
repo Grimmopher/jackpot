@@ -10,11 +10,11 @@ export default (props) => {
                 </div>
             </div>
 
-            {props.drawing.winningNumbers.map((n) => {
+            {props.drawing.winningNumbers.map((n,i) => {
                 let classes = 'drawing-data drawing-number';
                 classes += n.match ? ' match' : '';
                 return (
-                    <div className={classes}>
+                    <div key={i} className={classes}>
                         <div className="color-box">
                             {n.number} 
                         </div>
