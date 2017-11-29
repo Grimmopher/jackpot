@@ -49,13 +49,22 @@
             color: $powerball-color;
             border: 0.1rem $powerball-color solid;
         }
+        
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type=number] {
+            -moz-appearance:textfield;
+        }
     }
 
     .DayPickerInput{
         input {
             text-align: center;
         }
-       
     }
 
     .btn{
@@ -79,9 +88,4 @@
             width: 25%;
         }
     }
-
-    
-
-
-
 }

@@ -11,10 +11,10 @@ export default (props) => {
             <div className="player-nums">
                 {props.playerNumbers.map((n, i) => (i<5)
                      ?  (
-                            <input key={i} className="num" type="text" value={n} onChange={(event) => { props.onPlayerNumberChange(event, i) }} />
+                            <input key={i} className="num" type="number" value={n} onChange={(event) => { props.onPlayerNumberChange(event, i) }} />
                         )
                      :  (
-                            <input key={i} className="num pb" type="text" value={n} onChange={(event) => { props.onPlayerNumberChange(event, i) }} />
+                            <input key={i} className="num pb" type="number" value={n} onChange={(event) => { props.onPlayerNumberChange(event, i) }} />
                         )  
                 )}
             </div>
